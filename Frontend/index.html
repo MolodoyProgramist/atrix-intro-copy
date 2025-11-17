@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Copy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+    <nav class="sidebar-menu">
+        <button class="close-btn">X</button>
+        <ul>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Billing Terms</a></li>
+            <li><a href="#">Money-Back Policy</a></li>
+            <li><a href="#">My Account</a></li>
+        </ul>
+    </nav>
+
+    <button class="hamburger-menu" aria-label="Menu Toggle">
+    <i class="bi bi-list"></i>
+</button>
+
+    <h1 class="head">Get palm predictions and know <br>yourself better</h1>
+    <img src="img/Image.png" alt="Ладошка">
+    <button type="submit" class="predirect">Predict Now</button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.hamburger-menu');
+            const sidebar = document.querySelector('.sidebar-menu');
+            const closeButton = document.querySelector('.close-btn');
+
+            menuButton.addEventListener('click', function() {
+                sidebar.classList.toggle('open');
+            });
+
+            closeButton.addEventListener('click', function() {
+                sidebar.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html> 
