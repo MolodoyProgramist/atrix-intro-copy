@@ -17,34 +17,46 @@
         <button class="close-btn">X</button>
         <ul>
             <li><a href="#">Contact us</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">Billing Terms</a></li>
-            <li><a href="#">Money-Back Policy</a></li>
-            <li><a href="#">My Account</a></li>
+            <li><a href="Privacy.html">Privacy Policy</a></li>
+            <li><a href="TermsOfUse.html">Terms of Use</a></li>
+            <li><a href="Billing.html">Billing Terms</a></li>
+            <li><a href="Money.html">Money-Back Policy</a></li>
+            <li><a href="login.html">My Account</a></li>
         </ul>
     </nav>
 
     <button class="hamburger-menu" aria-label="Menu Toggle">
-    <i class="bi bi-list"></i>
-</button>
+        <i class="bi bi-list"></i>
+    </button>
 
     <h1 class="head">Get palm predictions and know <br>yourself better</h1>
     <img src="img/Image.png" alt="Ладошка">
     <button type="submit" class="predirect">Predict Now</button>
+    
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuButton = document.querySelector('.hamburger-menu');
             const sidebar = document.querySelector('.sidebar-menu');
             const closeButton = document.querySelector('.close-btn');
+            const body = document.body;
 
             menuButton.addEventListener('click', function() {
                 sidebar.classList.toggle('open');
+                body.classList.toggle('menu-open');
             });
 
             closeButton.addEventListener('click', function() {
                 sidebar.classList.remove('open');
+                body.classList.remove('menu-open');
+            });
+            
+            // Закрытие меню при клике на оверлей
+            body.addEventListener('click', function(e) {
+                if (e.target === body && sidebar.classList.contains('open')) {
+                    sidebar.classList.remove('open');
+                    body.classList.remove('menu-open');
+                }
             });
         });
     </script>
