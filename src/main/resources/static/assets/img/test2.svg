@@ -1,0 +1,105 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="400" height="220" viewBox="266 30 160 160" xml:space="preserve">
+    <defs>
+        <pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
+            <path fill="#a8e6cf" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"/>
+        </pattern>
+
+        <!-- Фильтры и градиенты для бликов -->
+        <filter id="blur-filter-1" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur result="filter_result_0" stdDeviation="12 12" edgeMode="duplicate"/>
+        </filter>
+
+        <linearGradient id="gradient-1" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="185" y1="185" x2="99.9000015258789" y2="264.92498779296875">
+            <stop offset="0%" stop-color="rgb(0,0,0)" stop-opacity="0"/>
+            <stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+        </linearGradient>
+
+        <filter id="blur-filter-2" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur result="filter_result_0" stdDeviation="12 12" edgeMode="duplicate"/>
+            <feGaussianBlur result="filter_result_1" stdDeviation="12 12" edgeMode="duplicate"/>
+        </filter>
+
+        <linearGradient id="gradient-2" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="165" y1="165" x2="76.19999694824219" y2="248.39999389648438">
+            <stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="0"/>
+            <stop offset="100%" stop-color="rgb(255,255,255)" stop-opacity="1"/>
+        </linearGradient>
+
+        <filter id="blur-filter-3" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur result="filter_result_0" stdDeviation="15 15" edgeMode="duplicate"/>
+            <feGaussianBlur result="filter_result_1" stdDeviation="15 15" edgeMode="duplicate"/>
+        </filter>
+
+        <linearGradient id="gradient-3" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="175" y1="175" x2="86.19999694824219" y2="258.3999938964844">
+            <stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="0"/>
+            <stop offset="100%" stop-color="rgb(255,255,255)" stop-opacity="1"/>
+        </linearGradient>
+
+        <filter id="blur-filter-4" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur result="filter_result_0" stdDeviation="6 6" edgeMode="duplicate"/>
+            <feGaussianBlur result="filter_result_1" stdDeviation="6 6" edgeMode="duplicate"/>
+        </filter>
+
+        <linearGradient id="gradient-4" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="160" y1="160" x2="71.19999694824219" y2="243.39999389648438">
+            <stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="0"/>
+            <stop offset="100%" stop-color="rgb(255,255,255)" stop-opacity="1"/>
+        </linearGradient>
+
+        <!-- Простые белые градиенты для лучшей видимости -->
+        <radialGradient id="simple-glow-1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="white" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+
+        <radialGradient id="simple-glow-2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="white" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+
+    <circle id="circle" cx="346" cy="110" r="80" fill="#1a2f3a"/>
+
+    <mask id="circle-mask">
+        <use x="0" y="0" xlink:href="#circle" opacity="1" fill="#ffffff"/>
+    </mask>
+
+    <g id="eff">
+        <use x="0" y="0" xlink:href="#circle" fill="#1a2f3a"/>
+
+        <g mask="url(#circle-mask)">
+            <rect class="water-fill" fill="url(#water)" x="-300" y="200" width="1200" height="120" opacity="0.4">
+                <animate attributeName="y" from="200" to="70" dur="3s" fill="freeze" calcMode="spline" keySplines="0.25 0.1 0.25 1"/>
+                <animate attributeType="xml" attributeName="x" from="-300" to="0" repeatCount="indefinite" dur="3s"/>
+            </rect>
+
+            <rect class="water-fill" fill="url(#water)" x="-400" y="200" width="1600" height="120" opacity="0.35">
+                <animate attributeName="y" from="200" to="70" dur="3s" fill="freeze" calcMode="spline" keySplines="0.25 0.1 0.25 1"/>
+                <animate attributeType="xml" attributeName="x" from="-400" to="0" repeatCount="indefinite" dur="4s"/>
+            </rect>
+
+            <rect class="water-fill" fill="url(#water)" x="-200" y="200" width="800" height="120" opacity="0.45">
+                <animate attributeName="y" from="200" to="70" dur="3s" fill="freeze" calcMode="spline" keySplines="0.25 0.1 0.25 1"/>
+                <animate attributeType="xml" attributeName="x" from="-200" to="0" repeatCount="indefinite" dur="2.4s"/>
+            </rect>
+
+            <rect class="water-fill" fill="url(#water)" x="-500" y="200" width="2000" height="120" opacity="0.3">
+                <animate attributeName="y" from="200" to="70" dur="3s" fill="freeze" calcMode="spline" keySplines="0.25 0.1 0.25 1"/>
+                <animate attributeType="xml" attributeName="x" from="-500" to="0" repeatCount="indefinite" dur="3.8s"/>
+            </rect>
+        </g>
+    </g>
+
+    <!-- Блики поверх всего -->
+    <g id="highlights">
+        <!-- Основные блики -->
+        <circle cx="320" cy="85" r="20" fill="url(#simple-glow-1)" filter="url(#blur-filter-4)" opacity="0.8"/>
+        <circle cx="370" cy="95" r="15" fill="url(#simple-glow-2)" filter="url(#blur-filter-4)" opacity="0.6"/>
+        <ellipse cx="315" cy="75" rx="12" ry="6" fill="white" filter="url(#blur-filter-4)" opacity="0.5"/>
+        <ellipse cx="375" cy="135" rx="8" ry="4" fill="white" filter="url(#blur-filter-4)" opacity="0.4"/>
+
+        <!-- Дополнительные мелкие блики -->
+        <circle cx="330" cy="70" r="5" fill="white" opacity="0.3"/>
+        <circle cx="360" cy="80" r="4" fill="white" opacity="0.2"/>
+    </g>
+
+    <use xlink:href="#eff" opacity="0.9"/>
+</svg>
