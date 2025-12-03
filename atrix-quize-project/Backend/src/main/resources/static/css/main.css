@@ -1,0 +1,201 @@
+/* 1. БАЗОВЫЕ СТИЛИ (BODY) */
+body {
+    background-color: #131523; 
+    color: white; 
+    font-family: Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start;
+    text-align: center; 
+    
+    overflow-x: hidden; 
+}
+
+/* 2. СТИЛИ ДЛЯ ЗАГОЛОВКА (H1) */
+.head {
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 700;
+    color: white; 
+    
+    margin-top: 40px; 
+    margin-bottom: 30px; 
+    max-width: 90%;
+    padding: 0 20px;
+    line-height: 1.3;
+}
+
+/* 3. СТИЛИ ДЛЯ ИЗОБРАЖЕНИЯ (IMG) */
+img {
+    display: block;
+    max-width: min(400px, 90%);
+    width: 100%;
+    height: auto;
+    margin-bottom: 40px; 
+    border-radius: 8px;
+}
+
+/* 4. СТИЛИ ДЛЯ КНОПКИ (.PREDIRECT) */
+.predirect {
+    padding: 14px 40px;
+    min-width: 200px;
+    max-width: 300px;
+    font-size: clamp(16px, 3vw, 18px);
+    border-radius: 16px;
+    background-color: #657BFF;
+    font-weight: 700;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 40px;
+}
+
+/* 5. АНИМАЦИЯ ПРИ НАВЕДЕНИИ (.PREDIRECT:HOVER) */
+.predirect:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 6px 20px rgba(101, 123, 255, 0.7); 
+}
+
+.predirect:active {
+    transform: scale(0.98);
+}
+
+/* 6. СТИЛИ ДЛЯ ГАМБУРГЕР-МЕНЮ */
+.hamburger-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border: none;
+    color: white;
+    background: none;
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 999;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    transition: color 0.2s ease;
+}
+.hamburger-menu:hover {
+    color: #657BFF;
+}
+
+
+
+
+/* 7. СТИЛИ ДЛЯ БОКОВОГО МЕНЮ (SIDEBAR) */
+.sidebar-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh; 
+    width: min(300px, 100%);
+    background-color: #272a3e; 
+    z-index: 1000; 
+    padding: 20px;
+    padding-top: 70px; 
+    
+    /* Скрытое состояние: сдвигаем его вправо за экран */
+    transform: translateX(100%); 
+    transition: transform 0.4s ease-in-out;
+    overflow-y: auto;
+}
+
+/* Состояние, когда меню открыто (добавляется JS) */
+.sidebar-menu.open {
+    transform: translateX(0); 
+}
+
+/* Скрываем гамбургер-меню, когда сайдбар открыт */
+body.menu-open .hamburger-menu {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Стили для ссылок внутри меню */
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-menu li {
+    margin: 0;
+}
+
+.sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: clamp(14px, 2.5vw, 16px);
+    font-family: Arial, sans-serif;
+    transition: color 0.2s ease;
+    display: inline-block;
+}
+
+.sidebar-menu a:hover {
+    color: #657BFF;
+}
+
+/* Кнопка закрытия (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1002;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #657BFF;
+}
+
+/* Оверлей для закрытия меню при клике */
+body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+    .head {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .predirect {
+        min-width: 90%;
+        padding: 12px 30px;
+    }
+}

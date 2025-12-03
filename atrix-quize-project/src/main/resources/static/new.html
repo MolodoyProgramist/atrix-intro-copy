@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palm Reading Report</title>
+    <link rel="stylesheet" href="css/new.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            Your palm reading report is ready
+        </header>
+
+        <main class="report-box">
+            <div class="report-content-wrapper">
+                <div class="hand-visual">
+                    <img src="img/life-lines.jpg" alt="Hand with palm lines" class="palm-image">
+                </div>
+                
+                <div class="stats-placeholder">
+                    <h2>OVERVIEW</h2>
+                    <div class="stat-item">
+                        <span class="stat-label">Life: 83%</span>
+                        <div class="progress-bar-container"><div class="progress-bar life" style="width: 83%;"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Health: 71%</span>
+                        <div class="progress-bar-container"><div class="progress-bar health" style="width: 71%;"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Wisdom: 81%</span>
+                        <div class="progress-bar-container"><div class="progress-bar wisdom" style="width: 81%;"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Career: 56%</span>
+                        <div class="progress-bar-container"><div class="progress-bar career" style="width: 56%;"></div></div>
+                    </div>
+                </div>
+            </div>
+            <p class="report-summary">Your <span class="highlight-line">Heart Line</span> demonstrates your great control.</p>
+        </main>
+
+        <section class="signup-section">
+            <h2>Sign up to understand yourself better with Atrix</h2>
+            <form id="signup-form" onsubmit="handleSignup(event)">
+                <input
+                        type="email"
+                        id="signup-email"
+                        name="email"
+                        placeholder="Enter your email*"
+                        required
+                >
+                <div class="security-info">
+                    <span class="security-icon" aria-label="Security icon"></span>
+                    <p>Your personal data is safe with us. We'll use your email for updates, receipts, and subscription details.</p>
+                </div>
+                <button type="submit" id="signup-button">Continue</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        async function handleSignup(event) {
+            event.preventDefault();
+
+            const emailInput = document.getElementById('signup-email');
+            const button = document.getElementById('signup-button');
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+
+            button.disabled = true;
+            const originalText = button.textContent;
+            button.textContent = 'Sending...';
+
+            try {
+                const response = await fetch('/api/user/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json().catch(() => ({}));
+
+                if (response.ok && data.success) {
+                    alert('We have sent a personal link to your email. Please check your inbox.');
+                    emailInput.value = '';
+                } else if (response.status === 404) {
+                    // Email не найден в системе – перенаправляем на страничку ошибки
+                    window.location.href = 'error.html';
+                } else {
+                    alert(data.error || 'Something went wrong. Please try again later.');
+                }
+            } catch (e) {
+                console.error(e);
+                alert('Network error. Please try again later.');
+            } finally {
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        }
+    </script>
+</body>
+</html>
